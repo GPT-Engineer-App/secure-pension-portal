@@ -1,11 +1,15 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const npsInvestment = "₹1,50,000";
   const pranNumber = "1234-5678-9012";
   const retirementGoal = "₹50,00,000";
+  const navigate = useNavigate();
+  
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
       <div className="col-span-1 md:col-span-2">
@@ -35,6 +39,7 @@ const Dashboard = () => {
         </CardHeader>
         <CardContent>
           <p>Complete your profile to get the most out of our services.</p>
+          <Button onClick={() => navigate("/profile")}>Complete Profile</Button>
         </CardContent>
       </Card>
       <Card>
