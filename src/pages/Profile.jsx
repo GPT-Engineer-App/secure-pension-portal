@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useNavigate } from "react-router-dom";
 
 const schema = z.object({
@@ -16,6 +15,7 @@ const schema = z.object({
   pan: z.string().min(10, "PAN must be 10 characters").max(10, "PAN must be 10 characters"),
   pran: z.string().optional(),
   company: z.string().min(1, "Company is required"),
+  otherCompanyName: z.string().optional(),
   employeeId: z.string().min(1, "Employee ID is required"),
   hrEmail: z.string().email("Invalid email address").optional(),
 });
@@ -25,6 +25,7 @@ const companies = ["Company A", "Company B", "Company C", "Others"];
 const Profile = () => {
   const [selectedCompany, setSelectedCompany] = useState("");
   const [showInviteHR, setShowInviteHR] = useState(false);
+  const [showOtherCompanyName, setShowOtherCompanyName] = useState(false);
   const navigate = useNavigate();
   const {
     register,
@@ -42,6 +43,7 @@ const Profile = () => {
   const handleCompanyChange = (value) => {
     setSelectedCompany(value);
     setShowInviteHR(value === "Others");
+    setShowOtherCompanyName(value === "Others");
   };
 
   return (
@@ -88,6 +90,13 @@ const Profile = () => {
           </Select>
           {errors.company && <p className="text-red-500">{errors.company.message}</p>}
         </div>
+        {showOtherCompanyName && (
+          <div>
+            <Label htmlFor="otherCompanyName">Other Company Name</Label>
+            <Input id="otherCompanyName" {...register("otherCompanyName")} />
+            {errors.otherCompanyName && <p className="text-red-500">{errors.otherCompanyName.message}</p>}
+          </div>
+        )}
         {showInviteHR && (
           <div>
             <Label htmlFor="hrEmail">HR Email</Label>
