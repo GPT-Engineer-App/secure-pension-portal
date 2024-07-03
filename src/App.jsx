@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import InvestInNPS from "./pages/InvestInNPS"; // Import the new page
 import PRANGeneration from "./pages/PRANGeneration"; // Import the PRAN generation page
+import RiskProfiling from "./pages/RiskProfiling"; // Import the RiskProfiling page
 const queryClient = new QueryClient();
 
 export const navItems = [
@@ -54,6 +55,7 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />
               <Route path="/invest-in-nps" element={<InvestInNPS />} /> {/* Add the new route */}
               <Route path="/pran-generation" element={<PRANGeneration />} /> {/* Add the PRAN generation route */}
+              <Route path="/risk-profiling" element={<RiskProfiling />} /> {/* Add the RiskProfiling route */}
             </Route>
           </Routes>
         </Router>
