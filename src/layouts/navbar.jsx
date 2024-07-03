@@ -35,13 +35,17 @@ const DesktopNav = () => (
       className="flex items-center gap-2 text-lg font-semibold md:text-base"
     >
       <Package2 className="h-6 w-6" />
-      <span className="sr-only">Acme Inc</span>
+      <span className="sr-only">NPS Investment</span>
     </NavItem>
     {navItems.map((item) => (
       <NavItem key={item.to} to={item.to}>
         {item.title}
       </NavItem>
     ))}
+    <div className="ml-auto flex items-center gap-4">
+      <Button variant="outline">Sign Up</Button>
+      <Button variant="outline">Sign In</Button>
+    </div>
   </nav>
 );
 
@@ -60,13 +64,17 @@ const MobileNav = () => (
           className="flex items-center gap-2 text-lg font-semibold"
         >
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
+          <span className="sr-only">NPS Investment</span>
         </NavItem>
         {navItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
             {item.title}
           </NavItem>
         ))}
+        <div className="flex flex-col gap-4 mt-4">
+          <Button variant="outline">Sign Up</Button>
+          <Button variant="outline">Sign In</Button>
+        </div>
       </nav>
     </SheetContent>
   </Sheet>
