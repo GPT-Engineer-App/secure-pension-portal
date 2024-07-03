@@ -10,6 +10,14 @@ const Dashboard = () => {
   const retirementGoal = "₹50,00,000";
   const navigate = useNavigate();
   
+  const handleInvestInNPS = () => {
+    try {
+      navigate("/invest-in-nps");
+    } catch (error) {
+      console.error("Navigation to Invest in NPS failed:", error);
+    }
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
       <div className="col-span-1 md:col-span-2">
@@ -56,6 +64,7 @@ const Dashboard = () => {
         </CardHeader>
         <CardContent>
           <p>Start investing in NPS to secure your future.</p>
+          <Button onClick={handleInvestInNPS}>Invest in NPS</Button>
         </CardContent>
       </Card>
       <Card>
