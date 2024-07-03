@@ -8,6 +8,8 @@ import Index from "./pages/Index.jsx";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
+import InvestInNPS from "./pages/InvestInNPS"; // Import the new page
+import PRANGeneration from "./pages/PRANGeneration"; // Import the PRAN generation page
 const queryClient = new QueryClient();
 
 export const navItems = [
@@ -50,6 +52,8 @@ const App = () => {
               <Route path="/signup" element={<Signup />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/invest-in-nps" element={<InvestInNPS />} /> {/* Add the new route */}
+              <Route path="/pran-generation" element={<PRANGeneration />} /> {/* Add the PRAN generation route */}
             </Route>
           </Routes>
         </Router>
