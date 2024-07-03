@@ -43,7 +43,7 @@ const DesktopNav = () => (
       </NavItem>
     ))}
     <div className="ml-auto flex items-center gap-4">
-      <Button variant="blue">Sign Up</Button>
+      <NavItem to="/signup">Sign Up</NavItem>
       <Button variant="outline">Sign In</Button>
     </div>
   </nav>
@@ -72,7 +72,7 @@ const MobileNav = () => (
           </NavItem>
         ))}
         <div className="flex flex-col gap-4 mt-4">
-          <Button variant="blue">Sign Up</Button>
+          <NavItem to="/signup">Sign Up</NavItem>
           <Button variant="outline">Sign In</Button>
         </div>
       </nav>
