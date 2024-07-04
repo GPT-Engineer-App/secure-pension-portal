@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../store/authSlice"; // Import the setAuth action
 
 const schema = z.object({
   mobile: z.string().min(10, "Mobile number must be 10 digits").max(10, "Mobile number must be 10 digits"),
@@ -15,6 +17,7 @@ const schema = z.object({
 const Signup = () => {
   const [otpSent, setOtpSent] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // Initialize dispatch
   const {
     register,
     handleSubmit,
@@ -29,6 +32,9 @@ const Signup = () => {
       setOtpSent(true);
     } else {
       // Simulate OTP verification and redirect to dashboard
+      const accessToken = "sampleAccessToken"; // Simulate access token
+      const userDetails = { mobile: data.mobile }; // Simulate user details
+      dispatch(setAuth({ accessToken, userDetails })); // Dispatch setAuth action
       navigate("/dashboard");
     }
   };

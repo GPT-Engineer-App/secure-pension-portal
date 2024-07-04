@@ -3,19 +3,29 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux"; // Import useSelector
+import { clearAuth } from "../store/authSlice"; // Import clearAuth action
+import { useDispatch } from "react-redux"; // Import useDispatch
 
 const Dashboard = () => {
   const npsInvestment = "₹1,50,000";
   const pranNumber = "1234-5678-9012";
   const retirementGoal = "₹50,00,000";
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch(); // Initialize dispatch
+  const { accessToken, userDetails } = useSelector((state) => state.auth); // Get auth state
+
   const handleInvestInNPS = () => {
     try {
       navigate("/invest-in-nps");
     } catch (error) {
       console.error("Navigation to Invest in NPS failed:", error);
     }
+  };
+
+  const handleLogout = () => {
+    dispatch(clearAuth()); // Clear auth state
+    navigate("/signup");
   };
 
   return (
@@ -75,6 +85,9 @@ const Dashboard = () => {
           <p>Modify your NPS selections to better suit your needs.</p>
         </CardContent>
       </Card>
+      <div className="col-span-1 md:col-span-2 flex justify-end">
+        <Button variant="outline" onClick={handleLogout}>Logout</Button>
+      </div>
     </div>
   );
 };
