@@ -11,6 +11,9 @@ import Profile from "./pages/Profile";
 import InvestInNPS from "./pages/InvestInNPS"; // Import the new page
 import PRANGeneration from "./pages/PRANGeneration"; // Import the PRAN generation page
 import RiskProfiling from "./pages/RiskProfiling"; // Import the RiskProfiling page
+import { Provider } from 'react-redux';
+import store from './store/store';
+
 const queryClient = new QueryClient();
 
 export const navItems = [
@@ -43,24 +46,26 @@ export const navItems = [
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Index />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/invest-in-nps" element={<InvestInNPS />} /> {/* Add the new route */}
-              <Route path="/pran-generation" element={<PRANGeneration />} /> {/* Add the PRAN generation route */}
-              <Route path="/risk-profiling" element={<RiskProfiling />} /> {/* Add the RiskProfiling route */}
-            </Route>
-          </Routes>
-        </Router>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <Toaster />
+          <Router>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Index />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/invest-in-nps" element={<InvestInNPS />} />
+                <Route path="/pran-generation" element={<PRANGeneration />} />
+                <Route path="/risk-profiling" element={<RiskProfiling />} />
+              </Route>
+            </Routes>
+          </Router>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </Provider>
   );
 };
 

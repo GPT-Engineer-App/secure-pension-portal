@@ -1,6 +1,11 @@
-import React from "react";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement } from '../store/sampleSlice';
 
 const Index = () => {
+  const value = useSelector((state) => state.sample.value);
+  const dispatch = useDispatch();
+
   return (
     <div>
       <section
@@ -143,6 +148,24 @@ const Index = () => {
           </div>
         </div>
       </footer>
+      <div className="flex flex-col items-center gap-4 p-8">
+        <h2 className="text-3xl font-bold mb-4">Redux Counter Example</h2>
+        <div className="flex items-center gap-4">
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded"
+            onClick={() => dispatch(increment())}
+          >
+            Increment
+          </button>
+          <span className="text-2xl">{value}</span>
+          <button
+            className="bg-red-500 text-white px-4 py-2 rounded"
+            onClick={() => dispatch(decrement())}
+          >
+            Decrement
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
